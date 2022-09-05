@@ -1,0 +1,53 @@
+<div class="container">
+  <div *ngIf="successfullyCreated" class="alert alert-info" role="alert">
+    <span
+      class="closebtn"
+      onclick="this.parentElement.style.display='none';"
+      (click)="this.successfullyCreated = false"
+      >&times;User successfully created</span
+    >
+  </div>
+  <div class="form-group">
+    <label for="name">Username</label>
+    <input type="text" class="form-control" [(ngModel)]="username" />
+  </div>
+  <div class="form-group">
+    <label for="name">Password</label>
+    <input type="password" class="form-control" [(ngModel)]="password" />
+  </div>
+  <div class="form-group">
+    <label for="name">Repeat password</label>
+    <input type="password" class="form-control" [(ngModel)]="repeatPassword" />
+  </div>
+  <div class="form-group">
+    <label for="name">First name</label>
+    <input type="text" class="form-control" [(ngModel)]="firstName" />
+  </div>
+  <div class="form-group">
+    <label for="name">Last name</label>
+    <input type="text" class="form-control" [(ngModel)]="lastName" />
+  </div>
+  <div class="form-group">
+    <label for="name">Birthday</label>
+    <input type="date" class="form-control" [(ngModel)]="birthDate" />
+  </div>
+  <div class="form-group">
+    <label for="name">Age</label>
+    <input type="number" class="form-control" [(ngModel)]="age" />
+  </div>
+  <div class="form-group">
+    <label for="name">Security number</label>
+    <input type="number" class="form-control" [(ngModel)]="securityNumber" />
+  </div>
+  <div class="form-group">
+    <label for="name">Position</label>
+    <input type="text" class="form-control" [(ngModel)]="position" />
+  </div>
+  <div class="form-group">
+    <label for="name">Email</label>
+    <input type="email" class="form-control" [(ngModel)]="email" />
+  </div>
+  <button class="btn btn-primary" (click)="createEmployee()">
+    Create employee
+  </button>
+</div>

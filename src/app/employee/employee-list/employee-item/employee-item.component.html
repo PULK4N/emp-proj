@@ -1,0 +1,32 @@
+<td class="pl-4">{{ employee.id }}</td>
+<td>
+  <h5 class="font-medium mb-0">
+    {{ employee.firstName }} {{ employee.lastName }}
+  </h5>
+  <span class="text-muted">{{ employee.email }}</span>
+</td>
+<td>
+  <span class="text-muted">{{ employee.position }}</span>
+</td>
+<td>
+  <span class="text-muted">{{ employee.birthDate }}</span
+  ><br />
+  <span class="text-muted">{{ employee.securityNumber }}</span>
+</td>
+
+<td>
+  <button
+    type="button"
+    class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"
+    (click)="onDelete()"
+  >
+    <i class="fa fa-trash"></i>
+  </button>
+  <button
+    type="button"
+    class="btn btn-outline-info btn-circle btn-lg btn-circle ml-2"
+    routerLink="/employees/{{ employee.id }}/edit"
+  >
+    <i class="fa fa-edit"></i>
+  </button>
+</td>
