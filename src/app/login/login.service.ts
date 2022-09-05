@@ -1,26 +1,29 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatabaseService } from '../database.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LoginService {
+export class LoginService implements OnInit {
   //to local storage
-  private signedIn: boolean = false;
 
   constructor(
     private databaseService: DatabaseService,
     private router: Router,
     private route: ActivatedRoute
   ) {}
+  ngOnInit(): void {
+    if (localStorage.getItem('signedIn') == null)
+      localStorage.setItem('signedIn', 'true');
+  }
 
   login(username: string, password: string) {
     //put this back down
     let employee = this.databaseService.signIn(username, password);
     if (employee != undefined) {
       console.log('Succeded in signing in');
-      this.signedIn = true;
+      localStorage.setItem('signedIn', 'true');
       setTimeout(() => {
         this.router.navigate([
           this.route.snapshot.queryParamMap.has('returnUrl')
@@ -34,10 +37,11 @@ export class LoginService {
   }
 
   logout() {
-    this.signedIn = false;
+    localStorage.setItem('signedIn', 'false');
+    this.router.navigate(['/login']);
   }
 
   isSignedIn() {
-    return this.signedIn;
+    return localStorage.getItem('signedIn') == 'true';
   }
 }

@@ -39,6 +39,9 @@ export class AddEmployeeComponent implements OnInit {
 
   createEmployee() {
     const emp: Employee = new Employee(
+      0,
+      this.username,
+      this.password,
       this.firstName,
       this.lastName,
       this.birthDate,

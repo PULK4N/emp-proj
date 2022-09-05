@@ -15,7 +15,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { DatabaseService } from './database.service';
 import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.component';
 import { RefreshComponent } from './shared/refresh/refresh.component';
-import { NavComponent } from './nav/nav.component';
+import { NavbarComponent } from './shared/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +26,7 @@ import { NavComponent } from './nav/nav.component';
     AddEmployeeComponent,
     EditEmployeeComponent,
     RefreshComponent,
-    NavComponent,
+    NavbarComponent,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [LoginService, DatabaseService, AuthGuardService],

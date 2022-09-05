@@ -13,6 +13,10 @@ export class EmployeeService implements OnInit {
   }
   getEmployees(): Employee[] {
     this.employees = this.databaseService.getEmployees();
+
+    // const user = this.employees.find(x => x.firstName == 'igor')
+    // const searchedList = this.employees.filter(x => x.email.includes(param))
+
     return this.employees;
   }
 
@@ -21,7 +25,7 @@ export class EmployeeService implements OnInit {
   }
 
   addEmployee(username: string, password: string, employee: Employee): void {
-    this.databaseService.addEmployee(username, password, employee);
+    this.databaseService.addEmployee(employee);
   }
 
   editEmployee(id: number, employee: Employee) {
