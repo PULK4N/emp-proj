@@ -80,6 +80,7 @@ export class EditEmployeeComponent implements OnInit {
       this.email = emp.email;
       this.position = emp.position;
     }
+
     this.ageObserverable = new Observable((observer) => {
       observer.next(this.age);
       observer.complete();

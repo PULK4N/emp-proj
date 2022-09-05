@@ -9,14 +9,24 @@
   </div>
   <div class="form-group">
     <label for="name">First name</label>
-    <input type="text" class="form-control" [(ngModel)]="firstName" />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="firstName"
+      (input)="validateFirstName($event)"
+    />
     <div *ngIf="validEmployee.validFirstName" class="text-danger">
       First name must contain only letters.
     </div>
   </div>
   <div class="form-group">
     <label for="name">Last name</label>
-    <input type="text" class="form-control" [(ngModel)]="lastName" />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="lastName"
+      (input)="validateLastName($event)"
+    />
     <div *ngIf="validEmployee.validLastName" class="text-danger">
       Last name must contain only letters.
     </div>
@@ -27,21 +37,36 @@
   </div>
   <div class="form-group">
     <label for="name">Age</label>
-    <input type="number" class="form-control" [(ngModel)]="age" />
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="age"
+      (input)="validateAge($event)"
+    />
     <div *ngIf="validEmployee.validAge" class="text-danger">
       Age must be between 0 and 120
     </div>
   </div>
   <div class="form-group">
     <label for="name">Position</label>
-    <input type="text" class="form-control" [(ngModel)]="position" />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="position"
+      (input)="validatePosition($event)"
+    />
     <div *ngIf="validEmployee.validPosition" class="text-danger">
       Please enter a valid position
     </div>
   </div>
   <div class="form-group">
     <label for="name">Email</label>
-    <input type="email" class="form-control" [(ngModel)]="email" />
+    <input
+      type="email"
+      class="form-control"
+      [(ngModel)]="email"
+      (input)="validateEmail($event)"
+    />
     <div *ngIf="validEmployee.validEmail" class="text-danger">
       Please enter a valid email
     </div>
