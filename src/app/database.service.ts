@@ -69,7 +69,6 @@ export class DatabaseService {
 
   editEmployee(id: number, employee: Employee) {
     const emp = this.getEmployee(id);
-    console.log(emp);
     if (emp) {
       emp.firstName = employee.firstName;
       emp.lastName = employee.lastName;
@@ -83,6 +82,9 @@ export class DatabaseService {
 
   deleteEmployee(id: number) {
     let empIndex = this.employees.findIndex((x) => x.id == id);
-    if (empIndex) this.employees.splice(empIndex, 1);
+    this.employees = this.employees.filter((emp) => {
+      return emp.id !== id;
+    });
+    //if (empIndex) this.employees.splice(empIndex, 1);
   }
 }
