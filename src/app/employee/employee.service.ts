@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { EventEmitter, Injectable, OnInit } from '@angular/core';
 import { DatabaseService } from '../database.service';
 import { Employee } from './employee';
 
@@ -7,6 +7,7 @@ import { Employee } from './employee';
 })
 export class EmployeeService implements OnInit {
   employees: Employee[] = [];
+  public updatedEmployees: EventEmitter<void> = new EventEmitter(true);
   constructor(private databaseService: DatabaseService) {}
   ngOnInit(): void {
     this.employees = this.getEmployees();
@@ -24,7 +25,7 @@ export class EmployeeService implements OnInit {
     return this.databaseService.getEmployee(id);
   }
 
-  addEmployee(username: string, password: string, employee: Employee): void {
+  addEmployee(employee: Employee): void {
     this.databaseService.addEmployee(employee);
   }
 
@@ -34,5 +35,6 @@ export class EmployeeService implements OnInit {
 
   deleteEmployee(id: number) {
     this.databaseService.deleteEmployee(id);
+    this.updatedEmployees.emit();
   }
 }

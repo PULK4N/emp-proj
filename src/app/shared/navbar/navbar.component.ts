@@ -7,15 +7,18 @@ import { LoginService } from 'src/app/login/login.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit, OnDestroy {
+  private subscriptions: any[] = [];
   @Input()
   singedIn: boolean = false;
 
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.loginService.logInOutEvent.subscribe(() => {
-      this.singedIn = this.loginService.isSignedIn();
-    });
+    this.subscriptions.push(
+      this.loginService.logInOutEvent.subscribe(() => {
+        this.singedIn = this.loginService.isSignedIn();
+      })
+    );
     this.singedIn = this.loginService.isSignedIn();
   }
 
@@ -25,6 +28,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.loginService.logInOutEvent.unsubscribe();
+    this.subscriptions.forEach((element) => {
+      element.unsubscribe();
+    });
   }
 }

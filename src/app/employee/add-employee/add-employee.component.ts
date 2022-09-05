@@ -50,7 +50,7 @@ export class AddEmployeeComponent implements OnInit {
       this.position,
       this.email
     );
-    this.employeeService.addEmployee(this.username, this.password, emp);
+    this.employeeService.addEmployee(emp);
     this.successfullyCreated = true;
     setTimeout(() => {
       this.router.navigate(['/employees']);

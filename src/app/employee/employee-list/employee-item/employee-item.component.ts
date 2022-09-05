@@ -25,11 +25,11 @@ export class EmployeeItemComponent implements OnInit {
   onDelete() {
     //const id: number = this.route.snapshot.params['id'];
     this.employeeService.deleteEmployee(this.employee.id);
-    this.router
-      .navigateByUrl('/refresh', { skipLocationChange: true })
-      .then(() => {
-        this.router.navigate(['employees']);
-      });
+    // this.router
+    //   .navigateByUrl('/refresh', { skipLocationChange: true })
+    //   .then(() => {
+    //     this.router.navigate(['employees']);
+    //   });
   }
 
   getAge() {

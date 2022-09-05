@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Employee } from './employee/employee';
 
 @Injectable({
@@ -63,7 +63,7 @@ export class DatabaseService {
   }
 
   addEmployee(employee: Employee): void {
-    employee.id = this.lastIndex++;
+    employee.id = ++this.lastIndex;
     this.employees.push(employee);
   }
 
@@ -81,10 +81,8 @@ export class DatabaseService {
   }
 
   deleteEmployee(id: number) {
-    let empIndex = this.employees.findIndex((x) => x.id == id);
     this.employees = this.employees.filter((emp) => {
       return emp.id !== id;
     });
-    //if (empIndex) this.employees.splice(empIndex, 1);
   }
 }
