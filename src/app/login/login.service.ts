@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { EventEmitter, Injectable, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatabaseService } from '../database.service';
 
@@ -7,6 +7,7 @@ import { DatabaseService } from '../database.service';
 })
 export class LoginService implements OnInit {
   //to local storage
+  public logInOutEvent: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private databaseService: DatabaseService,
@@ -30,7 +31,8 @@ export class LoginService implements OnInit {
             ? this.route.snapshot.queryParamMap.get('returnUrl')
             : 'employees',
         ]);
-      }, 800);
+      });
+      this.logInOutEvent.emit();
       return true;
     }
     return false;
@@ -38,6 +40,7 @@ export class LoginService implements OnInit {
 
   logout() {
     localStorage.setItem('signedIn', 'false');
+    this.logInOutEvent.emit();
     this.router.navigate(['/login']);
   }
 

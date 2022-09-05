@@ -37,7 +37,6 @@ export class EditEmployeeComponent implements OnInit {
     let emp = this.employeeService.getEmployee(
       this.route.snapshot.params['id']
     );
-    console.log(emp);
     if (emp == undefined) this.router.navigate(['/employees']);
     else {
       this.emp = emp;
@@ -51,7 +50,6 @@ export class EditEmployeeComponent implements OnInit {
   }
 
   editEmployee() {
-    console.log(this.emp);
     this.emp.firstName = this.firstName;
     this.emp.lastName = this.lastName;
     this.emp.birthDate = this.birthDate;

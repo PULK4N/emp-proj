@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/login/login.service';
 
 @Component({
@@ -6,18 +6,25 @@ import { LoginService } from 'src/app/login/login.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent implements OnInit, OnDestroy {
   @Input()
   singedIn: boolean = false;
 
   constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
+    this.loginService.logInOutEvent.subscribe(() => {
+      this.singedIn = this.loginService.isSignedIn();
+    });
     this.singedIn = this.loginService.isSignedIn();
   }
 
   signOut(): void {
     this.loginService.logout();
     this.singedIn = false;
+  }
+
+  ngOnDestroy(): void {
+    this.loginService.logInOutEvent.unsubscribe();
   }
 }
