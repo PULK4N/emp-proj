@@ -10,10 +10,16 @@
   <div class="form-group">
     <label for="name">First name</label>
     <input type="text" class="form-control" [(ngModel)]="firstName" />
+    <div *ngIf="validEmployee.validFirstName" class="text-danger">
+      First name must contain only letters.
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Last name</label>
     <input type="text" class="form-control" [(ngModel)]="lastName" />
+    <div *ngIf="validEmployee.validLastName" class="text-danger">
+      Last name must contain only letters.
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Birthday</label>
@@ -22,14 +28,23 @@
   <div class="form-group">
     <label for="name">Age</label>
     <input type="number" class="form-control" [(ngModel)]="age" />
+    <div *ngIf="validEmployee.validAge" class="text-danger">
+      Age must be between 0 and 120
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Position</label>
     <input type="text" class="form-control" [(ngModel)]="position" />
+    <div *ngIf="validEmployee.validPosition" class="text-danger">
+      Please enter a valid position
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Email</label>
     <input type="email" class="form-control" [(ngModel)]="email" />
+    <div *ngIf="validEmployee.validEmail" class="text-danger">
+      Please enter a valid email
+    </div>
   </div>
   <button class="btn btn-primary" (click)="editEmployee()">
     Edit employee

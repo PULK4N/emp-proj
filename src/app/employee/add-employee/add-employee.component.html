@@ -9,43 +9,124 @@
   </div>
   <div class="form-group">
     <label for="name">Username</label>
-    <input type="text" class="form-control" [(ngModel)]="username" />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="username"
+      required
+      (input)="validateUsername($event)"
+    />
+    <div *ngIf="validEmployee.validUsername" class="text-danger">
+      Please input a valid username.
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Password</label>
-    <input type="password" class="form-control" [(ngModel)]="password" />
+    <input
+      type="password"
+      class="form-control"
+      [(ngModel)]="password"
+      required
+      (input)="validatePassword($event)"
+    />
+    <div *ngIf="validEmployee.validPassword" class="text-danger">
+      Please input a valid password.
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Repeat password</label>
-    <input type="password" class="form-control" [(ngModel)]="repeatPassword" />
+    <input
+      type="password"
+      class="form-control"
+      [(ngModel)]="repeatPassword"
+      required
+      (input)="validateRepeatPassword($event)"
+    />
+    <div *ngIf="validEmployee.validRepeatPassword" class="text-danger">
+      Passwords do not match
+    </div>
   </div>
   <div class="form-group">
     <label for="name">First name</label>
-    <input type="text" class="form-control" [(ngModel)]="firstName" />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="firstName"
+      required
+      (input)="validateFirstName($event)"
+    />
+    <div *ngIf="validEmployee.validFirstName" class="text-danger">
+      First name must contain only letters.
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Last name</label>
-    <input type="text" class="form-control" [(ngModel)]="lastName" />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="lastName"
+      required
+      (input)="validateLastName($event)"
+    />
+    <div *ngIf="validEmployee.validLastName" class="text-danger">
+      Last name must contain only letters.
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Birthday</label>
-    <input type="date" class="form-control" [(ngModel)]="birthDate" />
+    <input type="date" class="form-control" [(ngModel)]="birthDate" required />
   </div>
   <div class="form-group">
     <label for="name">Age</label>
-    <input type="number" class="form-control" [(ngModel)]="age" />
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="age"
+      required
+      (input)="validateAge($event)"
+    />
+    <div *ngIf="validEmployee.validAge" class="text-danger">
+      Age must be between 0 and 120
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Security number</label>
-    <input type="number" class="form-control" [(ngModel)]="securityNumber" />
+    <input
+      type="number"
+      class="form-control"
+      [(ngModel)]="securityNumber"
+      required
+      (input)="validateSecurityNumber($event)"
+    />
+    <div *ngIf="validEmployee.validSecurityNumber" class="text-danger">
+      Security number must contain 10 numbers
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Position</label>
-    <input type="text" class="form-control" [(ngModel)]="position" />
+    <input
+      type="text"
+      class="form-control"
+      [(ngModel)]="position"
+      required
+      (input)="validatePosition($event)"
+    />
+    <div *ngIf="validEmployee.validPosition" class="text-danger">
+      Please enter a valid position
+    </div>
   </div>
   <div class="form-group">
     <label for="name">Email</label>
-    <input type="email" class="form-control" [(ngModel)]="email" />
+    <input
+      type="email"
+      class="form-control"
+      [(ngModel)]="email"
+      required
+      (input)="validateEmail($event)"
+    />
+    <div *ngIf="validEmployee.validEmail" class="text-danger">
+      Please enter a valid email
+    </div>
   </div>
   <button class="btn btn-primary" (click)="createEmployee()">
     Create employee

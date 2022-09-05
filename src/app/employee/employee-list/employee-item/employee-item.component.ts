@@ -23,13 +23,7 @@ export class EmployeeItemComponent implements OnInit {
   ngOnInit(): void {}
 
   onDelete() {
-    //const id: number = this.route.snapshot.params['id'];
     this.employeeService.deleteEmployee(this.employee.id);
-    // this.router
-    //   .navigateByUrl('/refresh', { skipLocationChange: true })
-    //   .then(() => {
-    //     this.router.navigate(['employees']);
-    //   });
   }
 
   getAge() {

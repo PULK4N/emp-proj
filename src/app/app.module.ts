@@ -16,6 +16,7 @@ import { DatabaseService } from './database.service';
 import { EditEmployeeComponent } from './employee/edit-employee/edit-employee.component';
 import { RefreshComponent } from './shared/refresh/refresh.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { InputValidatorsDirective } from './shared/input-validators.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     EditEmployeeComponent,
     RefreshComponent,
     NavbarComponent,
+    InputValidatorsDirective,
   ],
   imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [LoginService, DatabaseService, AuthGuardService],

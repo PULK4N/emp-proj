@@ -15,3 +15,21 @@ export class Employee {
     public email: string = ''
   ) {}
 }
+
+export class ValidEmployee {
+  /**
+   *
+   */
+  constructor(
+    public validUsername: boolean = false,
+    public validPassword: boolean = false,
+    public validRepeatPassword: boolean = false,
+    public validFirstName: boolean = false,
+    public validLastName: boolean = false,
+    public validBirthDate: boolean = false,
+    public validSecurityNumber: boolean = false,
+    public validAge: boolean = false,
+    public validPosition: boolean = false,
+    public validEmail: boolean = false
+  ) {}
+}
