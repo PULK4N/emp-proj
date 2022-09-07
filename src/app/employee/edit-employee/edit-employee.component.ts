@@ -22,7 +22,7 @@ export class EditEmployeeComponent implements OnInit {
   @Input()
   public validEmployee: ValidEmployee = new ValidEmployee();
   private emailObserverable: Observable<string> | null = null;
-  private ageObserverable: Observable<number> | null = null;
+  private ageObserverable: Observable<string> | null = null;
   private positionObserverable: Observable<string> | null = null;
   private securityNumberObserverable: Observable<number> | null = null;
   private firstNameObserverable: Observable<string> | null = null;
@@ -40,7 +40,7 @@ export class EditEmployeeComponent implements OnInit {
   @Input()
   public securityNumber: number = 0;
   @Input()
-  public age: number = 0;
+  public age: string = '';
   @Input()
   public position: string = '';
   @Input()
@@ -126,12 +126,6 @@ export class EditEmployeeComponent implements OnInit {
     });
   }
 
-  validateAge(event: Event) {
-    this.ageObserverable?.subscribe(() => {
-      this.validEmployee.validAge = !(this.age > 0 && this.age < 120);
-    });
-  }
-
   validatePosition(event: Event) {
     this.positionObserverable?.subscribe(() => {
       this.validEmployee.validPosition = !POSITION_REGEX.test(this.position);
@@ -150,5 +144,11 @@ export class EditEmployeeComponent implements OnInit {
     this.emailObserverable?.subscribe(() => {
       this.validEmployee.validEmail = !EMAIL_REGEX.test(this.email);
     });
+  }
+
+  setAge(event:Event){
+    console.log("I was here");
+    
+    this.age = this.employeeService.calculateAge(this.birthDate);
   }
 }

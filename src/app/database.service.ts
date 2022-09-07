@@ -14,7 +14,7 @@ export class DatabaseService {
       'Tasmanic',
       new Date('01.01.1999'),
       0,
-      0,
+      '',
       'test',
       'test'
     ),
@@ -26,7 +26,7 @@ export class DatabaseService {
       'Rogger',
       new Date('01.02.1999'),
       0,
-      0,
+      '',
       'test',
       'test'
     ),
@@ -38,7 +38,7 @@ export class DatabaseService {
       'Martinovic',
       new Date('01.01.1999'),
       0,
-      0,
+      '',
       'Test',
       'test2'
     ),

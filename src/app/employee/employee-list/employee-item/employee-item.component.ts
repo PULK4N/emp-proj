@@ -25,15 +25,4 @@ export class EmployeeItemComponent implements OnInit {
   onDelete() {
     this.employeeService.deleteEmployee(this.employee.id);
   }
-
-  getAge() {
-    var today = new Date();
-    var birthDate = this.employee.birthDate;
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age;
-  }
 }

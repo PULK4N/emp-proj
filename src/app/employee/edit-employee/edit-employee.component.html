@@ -33,15 +33,15 @@
   </div>
   <div class="form-group">
     <label for="name">Birthday</label>
-    <input type="date" class="form-control" [(ngModel)]="birthDate" />
+    <input type="date" class="form-control" [(ngModel)]="birthDate" (input)="setAge($event)" />
   </div>
   <div class="form-group">
     <label for="name">Age</label>
     <input
+    disabled
       type="number"
       class="form-control"
       [(ngModel)]="age"
-      (input)="validateAge($event)"
     />
     <div *ngIf="validEmployee.validAge" class="text-danger">
       Age must be between 0 and 120

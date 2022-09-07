@@ -23,7 +23,7 @@ export class AddEmployeeComponent implements OnInit {
   private passwordObserverable: Observable<string> | null = null;
   private repeatPasswordObserverable: Observable<string> | null = null;
   private emailObserverable: Observable<string> | null = null;
-  private ageObserverable: Observable<number> | null = null;
+  private ageObserverable: Observable<string> | null = null;
   private positionObserverable: Observable<string> | null = null;
   private securityNumberObserverable: Observable<number> | null = null;
   private firstNameObserverable: Observable<string> | null = null;
@@ -49,7 +49,7 @@ export class AddEmployeeComponent implements OnInit {
   @Input()
   public securityNumber: number = 0;
   @Input()
-  public age: number = 0;
+  public age: string = '';
   @Input()
   public position: string = '';
   @Input()
@@ -129,7 +129,7 @@ export class AddEmployeeComponent implements OnInit {
 
   validateUsername(event: Event) {
     if (this.usernameObserverable)
-      this.usernameObserverable.subscribe((username) => {
+      this.usernameObserverable.subscribe((username: string) => {
         this.validEmployee.validUsername = !USERNAME_REGEX.test(username);
       });
   }
@@ -164,7 +164,7 @@ export class AddEmployeeComponent implements OnInit {
 
   validateAge(event: Event) {
     this.ageObserverable?.subscribe(() => {
-      this.validEmployee.validAge = !(this.age > 0 && this.age < 120);
+      this.validEmployee.validAge = !((Number(this.age) > 0) && Number(this.age) < 120);
     });
   }
 
@@ -186,5 +186,9 @@ export class AddEmployeeComponent implements OnInit {
     this.emailObserverable?.subscribe(() => {
       this.validEmployee.validEmail = !EMAIL_REGEX.test(this.email);
     });
+  }
+
+  setAge(event:Event){
+    this.age = this.employeeService.calculateAge(this.birthDate);
   }
 }
